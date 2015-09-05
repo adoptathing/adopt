@@ -3,7 +3,13 @@
  * Home page.
  */
 exports.index = function(req, res) {
-  res.render('home', {
-    title: 'Home'
-  });
+  if (req.user) {
+    res.render('adopt/neighborhood', {
+      title: 'Your Neighborhood'
+    });
+  } else {
+    res.render('home', {
+      title: 'Home'
+    });
+  }
 };
