@@ -12,6 +12,16 @@
       ul.nav.navbar-nav
         li(class=title=='Home'?'active':undefined)
           a(href='/') Home
+        if user
+          li.dropdown(class=title=='Neighborhood'?'active':undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Your Neighborhood
+              i.caret
+            ul.dropdown-menu
+              li
+                a(href='/adopt/browse') Browse
+              li
+                a(href='/adopt/add') Add Problem
         li(class=title=='API Examples'?'active':undefined)
           a(href='/api') API Examples
         li(class=title=='Contact'?'active':undefined)
