@@ -434,7 +434,7 @@ exports.postClockwork = function(req, res, next) {
   var message = {
     To: req.body.telephone,
     From: 'Hackathon',
-    Content: 'Hello from the Hackathon Starter'
+    Content: 'Hello from the adopt'
   };
   clockwork.sendSms(message, function(err, responseData) {
     if (err) return next(err.errDesc);
@@ -604,7 +604,7 @@ exports.getPayPal = function(req, res, next) {
       cancel_url: secrets.paypal.cancelUrl
     },
     transactions: [{
-      description: 'Hackathon Starter',
+      description: 'adopt',
       amount: {
         currency: 'USD',
         total: '1.99'
