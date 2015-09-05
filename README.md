@@ -8,6 +8,7 @@ To contribute to adopt or run it locally, just invoke the following commands in 
 git clone https://github.com/adoptathing/adopt.git
 cd adopt
 npm install
+npm install nodemon
 nodemon app
 ```
 
