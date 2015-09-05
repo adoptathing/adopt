@@ -17,13 +17,13 @@ var userSchema = new mongoose.Schema({
   profile: {
     name: { type: String, default: '' },
     gender: { type: String, default: '' },
-    location: { type: String, default: '' },
-    website: { type: String, default: '' },
+    longitude: { type: String, default: '' },
+    latitude: { type: String, default: ''},
     picture: { type: String, default: '' },
     city: { type: String, default: ''},
-    street: { type: String, default: ''},
+    address: { type: String, default: ''},
     state: { type: String, default: ''},
-    zip: { type: String, default: ''}
+    zip: { type: Number, default: ''}
   },
 
   resetPasswordToken: String,
