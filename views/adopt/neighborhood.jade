@@ -2,4 +2,57 @@ extends ../layout
 
 block content
   .page-header
-    h3 Your Neighborhood
+    h1 Home
+    span.h3 Neighborhood Dashboard - Philadelphia, PA
+  .row
+    .col-md-6
+      h2 Quick Look
+      table.table.table-hover
+        thead
+          tr
+            th Problem
+            th Location
+            th Time Submitted
+            th View
+        tbody
+          tr
+            td
+              a(href='/city-name/problem-name') Broken Bench
+            td 105 Oak Rd.
+            td submitted 5 minutes ago
+            td
+              a.btn.btn-xs.btn-info View &raquo;
+          tr
+            td
+              a(href='/city-name/problem-name') Unpainted Fire Hydrant
+            td 1300 Maple St.
+            td submitted yesterday
+            td
+              a.btn.btn-xs.btn-info View &raquo;
+    .col-md-6
+      h2 Your Pledges
+      table.table.table-hover
+        thead
+          tr
+            th Problem
+            th Location
+            th Pledge Amount
+            th Time Pledged
+            th View
+        tbody
+          tr
+            td
+              a(href='/city-name/problem-name') Broken Bench
+            td 105 Oak Rd.
+            td $20
+            td submitted 5 minutes ago
+            td
+              a.btn.btn-xs.btn-info View &raquo;
+          tr
+            td
+              a(href='/city-name/problem-name') Unpainted Fire Hydrant
+            td 1300 Maple St.
+            td $50
+            td submitted yesterday
+            td
+              a.btn.btn-xs.btn-info View &raquo;
