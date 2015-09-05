@@ -8,5 +8,11 @@ To contribute to adopt or run it locally, just invoke the following commands in 
 git clone https://github.com/adoptathing/adopt.git
 cd adopt
 npm install
-node app.js
+nodemon app
 ```
+
+## Visit
+[Adopt](http://adoptathing.co/)
+
+## License
+MIT?  IDK yet.
