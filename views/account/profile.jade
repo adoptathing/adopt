@@ -23,18 +23,25 @@ block content
         label.radio.col-sm-4
           input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
           span Female
+        label.radio.col-sm-4
+          input(type='radio', checked=user.profile.gender=='other', name='gender', value='other', data-toggle='radio')
+          span Other
     .form-group
-      label.col-sm-2.control-label(for='location') Location
+      label.col-sm-2.control-label(for='address') Address
       .col-sm-4
-        input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
+        input.form-control(type='text', name='address', id='address', value='#{user.profile.address}')  
     .form-group
-      label.col-sm-2.control-label(for='website') Website
+      label.col-sm-2.control-label(for='city') City
       .col-sm-4
-        input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
+        input.form-control(type='text', name='city', id='city', value='#{user.profile.city}')  
     .form-group
-      label.col-sm-2.control-label(for='gravatar') Gravatar
+      label.col-sm-2.control-label(for='state') State
       .col-sm-4
-        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
+        input.form-control(type='text', name='state', id='state', value='#{user.profile.state}')
+    .form-group
+      label.col-sm-2.control-label(for='zip') Zip
+      .col-sm-4
+        input.form-control(type='number', name='zip', id='zip', value='#{user.profile.zip}')
     .form-group
       .col-sm-offset-2.col-sm-4
         button.btn.btn.btn-primary(type='submit')

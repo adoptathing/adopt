@@ -5,7 +5,7 @@ Making public works projects, public.
 To contribute to adopt or run it locally, just invoke the following commands in any directory on your computer:
 
 ```
-git clone https://github.com/cnwalker/adopt.git
+git clone https://github.com/adoptathing/adopt.git
 cd adopt
 npm install
 node app.js
