@@ -5,7 +5,10 @@ var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
 var secrets = require('../config/secrets');
+var urllib = require('urllib');
+var Gmaps_API_KEY = 'AIzaSyDdxeOAV8pC92dxKCIdE9cPq4HxSkJm6jw';
 
+//console.log(resolveUrl('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=' + Gmaps_API_KEY));
 /**
  * GET /login
  * Login page.
@@ -16,6 +19,7 @@ exports.getLogin = function(req, res) {
     title: 'Login'
   });
 };
+
 
 /**
  * POST /login
@@ -115,6 +119,11 @@ exports.getAccount = function(req, res) {
 };
 
 /**
+*
+* Returns location object
+*/
+
+/**
  * POST /account/profile
  * Update profile information.
  */
@@ -124,8 +133,23 @@ exports.postUpdateProfile = function(req, res, next) {
     user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
     user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
+    user.profile.address = req.body.address || '';
+    user.profile.city = req.body.city || '';
+    user.profile.state = req.body.state || '';
+    user.profile.zip = req.body.zip || '';
+
+    var address = user.profile.address + ' ' + user.profile.city + ', ' + user.profile.state + ' ' + user.profile.zip;
+
+    urllib.request('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + Gmaps_API_KEY, function(err, data, res) {
+      if (err) {
+        console.log("error! ", err);
+      }
+      var raw = JSON.parse(data.toString());
+      var loc = raw.results[0].geometry.location;
+      user.profile.latitude = loc.lat.toString() || '';
+      user.profile.longitude = loc.lng.toString() || '';
+    });
 
     user.save(function(err) {
       if (err) return next(err);

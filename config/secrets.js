@@ -29,7 +29,7 @@ module.exports = {
     user: process.env.MAILGUN_USER || 'postmaster@sandbox697fcddc09814c6b83718b9fd5d4e5dc.mailgun.org',
     password: process.env.MAILGUN_PASSWORD || '29eldds1uri6'
   },
-  
+
   mandrill: {
     user: process.env.MANDRILL_USER || 'hackathonstarterdemo',
     password: process.env.MANDRILL_PASSWORD || 'E1K950_ydLR4mHw12a0ldA'
@@ -50,8 +50,8 @@ module.exports = {
   },
 
   facebook: {
-    clientID: process.env.FACEBOOK_ID || '518785538273974',
-    clientSecret: process.env.FACEBOOK_SECRET || '7ab17805e1705883420621af67475887',
+    clientID: process.env.FACEBOOK_ID || '754220301289665',
+    clientSecret: process.env.FACEBOOK_SECRET || '41860e58c256a3d7ad8267d3c1939a4a',
     callbackURL: '/auth/facebook/callback',
     passReqToCallback: true
   },

@@ -22,8 +22,8 @@ html
           ul.nav.navbar-nav
             li(class=title=='Home'?'active':undefined)
               a(href='/') Home
-            li(class=title=='API Examples'?'active':undefined)
-              a(href='/api') API Examples
+            li(class=title=='About'?'active':undefined)
+              a(href='/#about') About
             li(class=title=='Contact'?'active':undefined)
               a(href='/contact') Contact
           ul.nav.navbar-nav.navbar-right
@@ -59,45 +59,41 @@ html
           h1.text-uppercase Making Public Works, Public
           br
           p.lead.
-            Adopt allows you to sponsor the completion of various public works 
-            projects.  Making your community a better place, one project at a time.
+            Adopt allows you to find and tackle local problems through direct
+            action or sponsoring. We aim to make your community a better place, 
+            one project at a time.
           br
           br
           a.btn.btn-transparent-light.btn-xl(href='/signup') Join Now
-          br
-          br
-          a.btn.btn-sm.btn-facebook(href='/auth/facebook')
-              i.fa.fa-facebook
-              | Sign up with Facebook
-    .jumbotron.height-95
-      .container.text-center
-        .col-md-10.col-md-offset-1
-          h1 How it Works
-          br
-          p.
-            Sign up and view reported problems in your neighborhood - 
-            unpainted fire hydrants, broken sidewalks, and more.  You can pledge
-            money or materials to help solve the problem, or claim it and make
-            money while bettering your community.
-          .row
-            .col-md-4
-              h2 Join&nbsp;&nbsp;#[i.fa.fa-users]
-              p.
-                Join our community of volunteers and philantropists and view 
-                problems that need fixing in your neighborhood.
-            .col-md-4
-              h2 Pledge&nbsp;&nbsp;#[i.fa.fa-heart]
-              p.
-                Pledge money or resources towards the problem so that it can be
-                fixed.
-            .col-md-4
-              h2 Claim&nbsp;&nbsp;#[i.fa.fa-money]
-              p.
-                Claim tasks in your neighborhood, earning money and helping
-                the community at the same time.
-          br
-          br
-          a.btn.btn-transparent-dark.btn-xl(href='/signup') Pledge Today
+    #about
+      .jumbotron.height-95
+        .container.text-center
+          .col-md-10.col-md-offset-1
+            h1 How it Works
+            br
+            p.
+              Sign up and view reported problems in your neighborhood - 
+              unpainted fire hydrants, dirty parks, broken fences, and more.  You can pledge
+              rewards to help solve the problem, or adopt it and solve it yourself.
+            .row
+              .col-md-4
+                h2 Join&nbsp;&nbsp;#[i.fa.fa-users]
+                p.
+                  Join our community of volunteers and philantropists and view 
+                  problems that need fixing in your neighborhood.
+              .col-md-4
+                h2 Pledge&nbsp;&nbsp;#[i.fa.fa-heart]
+                p.
+                  Pledge resources towards the problem so that it can be
+                  fixed.
+              .col-md-4
+                h2 Adopt&nbsp;&nbsp;#[i.fa.fa-thumb-tack]
+                p.
+                  Adopt tasks in your neighborhood, earning perks and helping
+                  the community at the same time.
+            br
+            br
+            a.btn.btn-transparent-dark.btn-xl(href='/signup') Adopt Today
 
     include partials/footer
 

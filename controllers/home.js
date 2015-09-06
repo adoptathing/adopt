@@ -5,7 +5,7 @@
 exports.index = function(req, res) {
   if (req.user) {
     res.render('adopt/neighborhood', {
-      title: 'Your Neighborhood'
+      title: 'Your Neighborhood',
     });
   } else {
     res.render('home', {
