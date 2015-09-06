@@ -10,21 +10,25 @@ block content
       .col-sm-7
         input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus)
     .form-group
-      label.col-sm-2.control-label(for='address') Address
-      .col-sm-4
-        input.form-control(type='text', name='address', id='address')  
+      label.col-sm-3.control-label(for='name') Full Name
+      .col-sm-7
+        input.form-control(type='text', name='name', id='name', placeholder='Full Name')
     .form-group
-      label.col-sm-2.control-label(for='city') City
-      .col-sm-4
-        input.form-control(type='text', name='city', id='city')  
+      label.col-sm-3.control-label(for='address') Address
+      .col-sm-7
+        input.form-control(type='text', name='address', id='address', placeholder="Address")  
     .form-group
-      label.col-sm-2.control-label(for='state') State
-      .col-sm-4
-        input.form-control(type='text', name='state', id='state')
+      label.col-sm-3.control-label(for='city') City
+      .col-sm-7
+        input.form-control(type='text', name='city', id='city', placeholder="City")  
     .form-group
-      label.col-sm-2.control-label(for='zip') Zip
-      .col-sm-4
-        input.form-control(type='number', name='zip', id='zip')
+      label.col-sm-3.control-label(for='state') State
+      .col-sm-7
+        input.form-control(type='text', name='state', id='state', placeholder="State")
+    .form-group
+      label.col-sm-3.control-label(for='zip') Zip
+      .col-sm-7
+        input.form-control(type='number', name='zip', id='zip' placeholder="ZIP")
     .form-group
       label.col-sm-3.control-label(for='password') Password
       .col-sm-7
@@ -33,10 +37,6 @@ block content
       label.col-sm-3.control-label(for='confirmPassword') Confirm Password
       .col-sm-7
         input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
-    .form-group
-      label.col-sm-3.control-label(for='name') Full Name
-      .col-sm-7
-        input.form-control(type='text', name='name', id='name', placeholder='Full Name')
     .form-group
       .col-sm-offset-3.col-sm-7
         button.btn.btn-success(type='submit')
