@@ -19,9 +19,9 @@
               i.caret
             ul.dropdown-menu
               li
-                a(href='/adopt/browse') Browse
+                a(href='/#{user.profile.city.toLowerCase()}/browse') Browse
               li
-                a(href='/adopt/add') Add Problem
+                a(href='/#{user.profile.city.toLowerCase()}/add') Add Problem
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=title=='Login'?'active':undefined)
