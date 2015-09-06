@@ -80,6 +80,8 @@ exports.postSignup = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  req.assert('name', 'Name is required').notEmpty();
+  req.assert('city', 'City is required').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -90,7 +92,11 @@ exports.postSignup = function(req, res, next) {
 
   var user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    profile: {
+      name: req.body.name,
+      city: req.body.location
+    }
   });
 
   User.findOne({ email: req.body.email }, function(err, existingUser) {
