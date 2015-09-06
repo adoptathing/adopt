@@ -194,7 +194,7 @@ app.get('/auth/venmo/callback', passport.authorize('venmo', { failureRedirect: '
 /**
  * Adopt Routes
  */
- 
+
 app.get('/:cityName/browse', itemController.getBrowse);
 app.get('/:cityName/add', itemController.getAdd);
 app.get('/:cityName/:problemName', itemController.getItem);
