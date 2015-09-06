@@ -5,6 +5,14 @@ block content
     h1 
         | #{user.profile.city}&nbsp;
     span.h3 Neighborhood Dashboard
+    span.h4 
+      br
+      State Representative: 
+      a(href='#{state_link}')| #{state_rep}
+    span.h4
+      br
+      Federal Representative: 
+      a(href='#{congressman_link}')| #{congressman}
   .row
     .col-md-6
       h2 Your Pledges

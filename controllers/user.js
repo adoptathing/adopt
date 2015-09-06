@@ -10,6 +10,7 @@ var urllib = require('urllib');
 /* API Keys */
 var Gmaps_API_KEY = 'AIzaSyDdxeOAV8pC92dxKCIdE9cPq4HxSkJm6jw';
 var Everyblock_API_KEY = 'e1963401647a3c8ebbb7524c4a4debba93ff13e1';
+var Sunlight_API_KEY = '55bfc2ea51944ba58364c6f1d84103d1';
 
 
 /**
@@ -22,7 +23,6 @@ exports.getLogin = function(req, res) {
     title: 'Login'
   });
 };
-
 
 /**
  * POST /login
