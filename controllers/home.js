@@ -17,7 +17,7 @@ exports.index = function(req, res) {
       urllib.request('http://congress.api.sunlightfoundation.com/legislators/locate?' + 'latitude=' + user.profile.latitude +
       '&' + 'longitude=' + user.profile.longitude + '&' + 'apikey=' + Sunlight_API_KEY, function(err, data, resp) {
         if (err) {
-          console.log("error! ", err);
+          console.log('error! ', err);
         }
        var results = JSON.parse(data.toString()).results;
 
