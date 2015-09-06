@@ -16,4 +16,4 @@ nodemon app
 [Adopt](http://adoptathing.co/)
 
 ## License
-MIT?  IDK yet.
+This project is licensed under the terms of the MIT license.
