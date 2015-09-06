@@ -17,6 +17,16 @@ block content
       label.col-sm-3.control-label(for='confirmPassword') Confirm Password
       .col-sm-7
         input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
+    //- Need to edit controller to save these values (name and location)
+    .form-group
+      label.col-sm-3.control-label(for='name') Full Name
+      .col-sm-7
+        input.form-control(type='text', name='name', id='name', placeholder='Full Name')
+    //- Maybe use Google maps autocomplete for location?
+    .form-group
+      label.col-sm-3.control-label(for='location') Location
+      .col-sm-7
+        input.form-control(type='text', name='location', id='location', placeholder='City, State')
     .form-group
       .col-sm-offset-3.col-sm-7
         button.btn.btn-success(type='submit')
