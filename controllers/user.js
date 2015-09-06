@@ -6,9 +6,12 @@ var passport = require('passport');
 var User = require('../models/User');
 var secrets = require('../config/secrets');
 var urllib = require('urllib');
-var Gmaps_API_KEY = 'AIzaSyDdxeOAV8pC92dxKCIdE9cPq4HxSkJm6jw';
 
-//console.log(resolveUrl('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=' + Gmaps_API_KEY));
+/* API Keys */
+var Gmaps_API_KEY = 'AIzaSyDdxeOAV8pC92dxKCIdE9cPq4HxSkJm6jw';
+var Everyblock_API_KEY = 'e1963401647a3c8ebbb7524c4a4debba93ff13e1';
+
+
 /**
  * GET /login
  * Login page.
@@ -45,6 +48,13 @@ exports.postLogin = function(req, res, next) {
     req.logIn(user, function(err) {
       if (err) return next(err);
       req.flash('success', { msg: 'Success! You are logged in.' });
+      urllib.request('https://api.everyblock.com/content/' + user.city + '/locations/' + user.zip +
+      '/timeline/events/' + '?token=' + Everyblock_API_KEY, function(err, data, res) {
+        if (err) {
+          console.log("error! ", err);
+        }
+      //  console.log(data.toString());
+      });
       res.redirect('/');
       // Don't returnTo
       // res.redirect(req.session.returnTo || '/');
@@ -78,7 +88,7 @@ exports.getSignup = function(req, res) {
  */
 exports.postSignup = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
-  req.assert('city', 'Must include a city').notEmpty(); 
+  req.assert('city', 'Must include a city').notEmpty();
   req.assert('address', 'Must include an address').notEmpty();
   req.assert('state', 'Must include a state').notEmpty();
   req.assert('zip', 'Must include a zip').notEmpty();
@@ -97,13 +107,12 @@ exports.postSignup = function(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     profile: {
-      name: req.body.name
+      name: req.body.name,
+      city: req.body.city,
+      address: req.body.address,
+      state: req.body.state,
+      zip: req.body.zip
     },
-    city: req.body.city,
-    address: req.body.address,
-    state: req.body.state,
-    zip: req.body.zip,
-    password: req.body.password
   });
 
   User.findOne({ email: req.body.email }, function(err, existingUser) {
@@ -111,18 +120,6 @@ exports.postSignup = function(req, res, next) {
       req.flash('errors', { msg: 'Account with that email address already exists.' });
       return res.redirect('/signup');
     }
-
-    var address = user.profile.address + ' ' + user.profile.city + ', ' + user.profile.state + ' ' + user.profile.zip;
-
-    urllib.request('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + Gmaps_API_KEY, function(err, data, res) {
-      if (err) {
-        console.log("error! ", err);
-      }
-      var raw = JSON.parse(data.toString());
-      var loc = raw.results[0].geometry.location;
-      user.profile.latitude = loc.lat.toString() || '';
-      user.profile.longitude = loc.lng.toString() || '';
-    });
 
     user.save(function(err) {
       if (err) return next(err);
@@ -168,20 +165,23 @@ exports.postUpdateProfile = function(req, res, next) {
     var address = user.profile.address + ' ' + user.profile.city + ', ' + user.profile.state + ' ' + user.profile.zip;
 
     urllib.request('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + Gmaps_API_KEY, function(err, data, res) {
-      if (err) {
-        console.log("error! ", err);
-      }
       var raw = JSON.parse(data.toString());
       var loc = raw.results[0].geometry.location;
       user.profile.latitude = loc.lat.toString() || '';
       user.profile.longitude = loc.lng.toString() || '';
+
+      user.save(function(err) {
+          if (err) return next(err);
+          req.flash('success', { msg: 'Profile information updated.' });
+          res.redirect('/account');
+        });
     });
 
     user.save(function(err) {
-      if (err) return next(err);
-      req.flash('success', { msg: 'Profile information updated.' });
-      res.redirect('/account');
-    });
+        if (err) return next(err);
+        req.flash('success', { msg: 'Profile information updated.' });
+        res.redirect('/account');
+      });
   });
 };
 
