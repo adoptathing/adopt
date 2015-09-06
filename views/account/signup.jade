@@ -12,19 +12,19 @@ block content
     .form-group
       label.col-sm-2.control-label(for='address') Address
       .col-sm-4
-        input.form-control(type='text', name='address', id='address', value='#{user.profile.address}')  
+        input.form-control(type='text', name='address', id='address')  
     .form-group
       label.col-sm-2.control-label(for='city') City
       .col-sm-4
-        input.form-control(type='text', name='city', id='city', value='#{user.profile.city}')  
+        input.form-control(type='text', name='city', id='city')  
     .form-group
       label.col-sm-2.control-label(for='state') State
       .col-sm-4
-        input.form-control(type='text', name='state', id='state', value='#{user.profile.state}')
+        input.form-control(type='text', name='state', id='state')
     .form-group
       label.col-sm-2.control-label(for='zip') Zip
       .col-sm-4
-        input.form-control(type='number', name='zip', id='zip', value='#{user.profile.zip}')
+        input.form-control(type='number', name='zip', id='zip')
     .form-group
       label.col-sm-3.control-label(for='password') Password
       .col-sm-7
@@ -33,16 +33,10 @@ block content
       label.col-sm-3.control-label(for='confirmPassword') Confirm Password
       .col-sm-7
         input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
-    //- Need to edit controller to save these values (name and location)
     .form-group
       label.col-sm-3.control-label(for='name') Full Name
       .col-sm-7
         input.form-control(type='text', name='name', id='name', placeholder='Full Name')
-    //- Maybe use Google maps autocomplete for location?
-    .form-group
-      label.col-sm-3.control-label(for='location') Location
-      .col-sm-7
-        input.form-control(type='text', name='location', id='location', placeholder='City, State')
     .form-group
       .col-sm-offset-3.col-sm-7
         button.btn.btn-success(type='submit')

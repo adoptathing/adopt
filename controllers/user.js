@@ -78,14 +78,13 @@ exports.getSignup = function(req, res) {
  */
 exports.postSignup = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
-  req.assert('city', 'Must include a city').len(1);
-  req.assert('address', 'Must include an address').len(1);
-  req.assert('state', 'Must include a state').len(1);
-  req.assert('zip', 'Must include a zip').len(1);
+  req.assert('city', 'Must include a city').notEmpty(); 
+  req.assert('address', 'Must include an address').notEmpty();
+  req.assert('state', 'Must include a state').notEmpty();
+  req.assert('zip', 'Must include a zip').notEmpty();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
   req.assert('name', 'Name is required').notEmpty();
-  req.assert('city', 'City is required').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -97,10 +96,8 @@ exports.postSignup = function(req, res, next) {
   var user = new User({
     email: req.body.email,
     password: req.body.password,
-    // Profile is here because these values are already provided by hackathon starter.
     profile: {
-      name: req.body.name,
-      city: req.body.location
+      name: req.body.name
     },
     city: req.body.city,
     address: req.body.address,
