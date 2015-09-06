@@ -10,8 +10,6 @@
         | Adopt
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=title=='Home'?'active':undefined)
-          a(href='/') Home
         if user
           li.dropdown(class=title=='Neighborhood'?'active':undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')

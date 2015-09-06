@@ -78,6 +78,10 @@ exports.getSignup = function(req, res) {
  */
 exports.postSignup = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
+  req.assert('city', 'Must include a city').len(1);
+  req.assert('address', 'Must include an address').len(1);
+  req.assert('state', 'Must include a state').len(1);
+  req.assert('zip', 'Must include a zip').len(1);
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
 
@@ -90,6 +94,10 @@ exports.postSignup = function(req, res, next) {
 
   var user = new User({
     email: req.body.email,
+    city: req.body.city,
+    address: req.body.address,
+    state: req.body.state,
+    zip: req.body.zip,
     password: req.body.password
   });
 
@@ -98,6 +106,19 @@ exports.postSignup = function(req, res, next) {
       req.flash('errors', { msg: 'Account with that email address already exists.' });
       return res.redirect('/signup');
     }
+
+    var address = user.profile.address + ' ' + user.profile.city + ', ' + user.profile.state + ' ' + user.profile.zip;
+
+    urllib.request('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + Gmaps_API_KEY, function(err, data, res) {
+      if (err) {
+        console.log("error! ", err);
+      }
+      var raw = JSON.parse(data.toString());
+      var loc = raw.results[0].geometry.location;
+      user.profile.latitude = loc.lat.toString() || '';
+      user.profile.longitude = loc.lng.toString() || '';
+    });
+
     user.save(function(err) {
       if (err) return next(err);
       req.logIn(user, function(err) {
